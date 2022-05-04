@@ -1,0 +1,15 @@
+<%- include('header') -%> 
+<form action="home" method="post">
+<h1>Compose a new post</h1>
+<div>
+    <label for="title"><h2>Post title: </h2></label>
+    <input type="text" name="title">
+</div>
+<div>
+    <h3>Body</h3>
+    <textarea name="post_body" cols="70" rows="10"></textarea>
+</div>
+
+    <button type="submit">Post</button>
+</form>
+<%- include('footer') -%> 
