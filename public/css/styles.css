@@ -40,3 +40,12 @@
 .more {
     display: none
 }
+
+h1 {
+    text-transform: uppercase;
+}
+.center {
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+  }

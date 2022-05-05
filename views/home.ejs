@@ -1,18 +1,24 @@
 <%- include('header') -%> 
-<%# if there is nothing in posts, write out that there are no posts %> 
-<% if (posts.length == 0) { %> 
-    <h1>You haven't made any posts yet</h1>
-<% } else {%> 
-    <%# otherwise show the posts %> 
-    <% for (let i = 0; i < posts.length; i++) { %>
-        <% post = posts[i] %> 
-        <% const title = post.title %>
-        <% const msg = post.body %>  
-        <h2><%= post.title %></h2> </h2>
-        <h4><%= post.date_created %> </h4>
-        <p id="post_<%= i %>" "><%= post.first_100_chars %><span class="dots">... </span>
-            <span class="more"><%= msg.substring(100) %> </span><button class="read_more" id="<%= i %>">Read more</button>
-        </p>
-        <% } %> 
-<% } %> 
+<form action="/post" method="post">
+    <%# if there is nothing in posts, write out that there are no posts %> 
+    <% if (posts.length == 0) { %> 
+        <h1>You haven't made any posts yet</h1>
+    <% } else {%> 
+        <%# otherwise show the posts %> 
+        <% for (let i = 0; i < posts.length; i++) { %>
+            <% post = posts[i] %> 
+            <% const title = post.title %>
+            <% const msg = post.body %>  
+            <h2><%= post.title %></h2> </h2>
+            <h4><%= post.date_created %> </h4>
+            <% if (post.first_100_chars.length < 100) { %> 
+                <p><%= msg %> </p> 
+            <% } else {%>
+            <p id="post_<%= i %>" "><%= post.first_100_chars %><span class="dots">... </span>
+                <span class="more"><%= msg.substring(100) %> </span><button type="submit" class="read_more" id="<%= i %>" name="post_number" value="<%= i %>">Read more</button>
+            </p>
+            <% } %>  
+            <% } %> 
+    <% } %> 
+</form>
 <%- include('footer') -%> 
