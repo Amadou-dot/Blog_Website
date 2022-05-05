@@ -42,6 +42,7 @@ app.post('/home', (req, res) => {
 })
 
 app.post('/post', (req, res) => {
+    // whenever the read more button is pressed the user is directed here for the full page of the post
     postNumber = req.body.post_number
     res.render('post',{post:postsData.posts[postNumber]})
 })

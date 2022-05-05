@@ -11,11 +11,13 @@
             <% const msg = post.body %>  
             <h2><%= post.title %></h2> </h2>
             <h4><%= post.date_created %> </h4>
+            <%# only add the read more button for posts with over 100 characters %> 
             <% if (post.first_100_chars.length < 100) { %> 
                 <p><%= msg %> </p> 
             <% } else {%>
             <p id="post_<%= i %>" "><%= post.first_100_chars %><span class="dots">... </span>
-                <span class="more"><%= msg.substring(100) %> </span><button type="submit" class="read_more" id="<%= i %>" name="post_number" value="<%= i %>">Read more</button>
+                <span class="more"><%= msg.substring(100) %> </span>
+                <button type="submit" class="read_more" id="<%= i %>" name="post_number" value="<%= post.post_number %>">Read more</button>
             </p>
             <% } %>  
             <% } %> 
